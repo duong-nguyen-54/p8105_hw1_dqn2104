@@ -3,12 +3,13 @@ title: "Homework 2"
 name: Duong (Danny) Nguyen
 UNI: dqn2104
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 #Load library
-```{r}
+```{r, results=FALSE}
 library(tidyverse)
-install.packages("moderndive")
 library(moderndive)
 library(ggplot2)
 ```
@@ -20,7 +21,7 @@ data("early_january_weather")
 mean(early_january_weather$temp)
 ```
 ##Description of the data
-This dataset shows weather data on hourly meterological data for LGA, JFK, and EWR for the month of January 2013. This data frame has `r nrow(early_january_weather) and `r ncol(early_january_weather)` represening hourly measurements of 15 variables. Some of its variables include temperature, humidity, wind direction&speed&gust speed, precipitation,etc. The average temperature is `r mean(early_january_weather$temp)`.
+This dataset shows weather data on hourly meterological data for LGA, JFK, and EWR for the month of January 2013. This data frame has `r nrow(early_january_weather)` and `r ncol(early_january_weather)` represening hourly measurements of 15 variables. Some of its variables include temperature, humidity, wind direction&speed&gust speed, precipitation,etc. The average temperature is `r mean(early_january_weather$temp)`.
 
 ##Scatterplot
 ```{r}
@@ -58,7 +59,7 @@ mean_factor = mean(pull(df_2,factor))
 Out of 4 variables of dataframe above, we can only calculate mean of numeric and logical ones, while taking mean of characters and factors yeilds to NA_real_ result. 
 
 ##as.numeric code chunk
-```{r}
+```{r, eval=FALSE}
 df_2 %>%
   logical=as.numeric(logical)
 #error shows "cannot coerce type 'closure' to vector of type 'double'"
