@@ -9,7 +9,7 @@ editor_options:
 
 # Load library
 
-```{r, results=FALSE}
+```{r,results=FALSE}
 library(tidyverse)
 library(moderndive)
 library(ggplot2)
@@ -17,7 +17,7 @@ library(ggplot2)
 
 # Problem 1
 
-```{r,warning=F}
+```{r,results=FALSE}
 data("early_january_weather")
 ?early_january_weather
 ```
@@ -28,7 +28,7 @@ This dataset shows weather data on hourly meterological data for LGA, JFK, and E
 
 ## Scatterplot
 
-```{r}
+```{r,results=FALSE}
 plot = 
   ggplot(early_january_weather, aes(x=time_hour, y=temp, color=humid))+
   geom_point() + 
@@ -48,7 +48,7 @@ The scatterplot shows a non-linear graph between time and temperature. Due to it
 
 ## Make Dataframe
 
-```{r}
+```{r,results=FALSE}
 df_2 = tibble(
   number=rnorm(10),
   logical=ifelse(number>0, TRUE, FALSE),
@@ -60,7 +60,7 @@ print(df_2)
 
 ## Calculate mean
 
-```{r}
+```{r,results=FALSE}
 mean_number = mean(pull(df_2,number))
 mean_logical = mean(pull(df_2,logical))
 mean_character = mean(pull(df_2,character))
