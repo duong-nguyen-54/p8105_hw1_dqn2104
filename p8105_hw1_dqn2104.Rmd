@@ -17,10 +17,9 @@ library(ggplot2)
 
 # Problem 1
 
-```{r}
+```{r,warning=F}
 data("early_january_weather")
 ?early_january_weather
-mean(early_january_weather$temp)
 ```
 
 ## Description of the data
