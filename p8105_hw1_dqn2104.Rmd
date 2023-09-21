@@ -7,23 +7,28 @@ editor_options:
   chunk_output_type: console
 ---
 
-#Load library
+# Load library
+
 ```{r, results=FALSE}
 library(tidyverse)
 library(moderndive)
 library(ggplot2)
 ```
 
-#Problem 1
+# Problem 1
+
 ```{r}
 data("early_january_weather")
 ?early_january_weather
 mean(early_january_weather$temp)
 ```
-##Description of the data
+
+## Description of the data
+
 This dataset shows weather data on hourly meterological data for LGA, JFK, and EWR for the month of January 2013. This data frame has `r nrow(early_january_weather)` and `r ncol(early_january_weather)` represening hourly measurements of 15 variables. Some of its variables include temperature, humidity, wind direction&speed&gust speed, precipitation,etc. The average temperature is `r mean(early_january_weather$temp)`.
 
-##Scatterplot
+## Scatterplot
+
 ```{r}
 plot = 
   ggplot(early_january_weather, aes(x=time_hour, y=temp, color=humid))+
@@ -35,11 +40,15 @@ plot
 
 ggsave("plot.pdf")
 ```
-###Description of the graph 
+
+### Description of the graph 
+
 The scatterplot shows a non-linear graph between time and temperature. Due to its being an hourly documentation of temperature, it is usual to see this pattern as the temperature tends to go down at night, but rising in the morning. However, overall, we can see an upward trend as it peaks at about 57 degree while its lowest point being 24 degree. There maybe a positive correlation between temperature and humidity as higher temperature leads to higher humidity, but further analysis is needed to conclude this. 
 
-#Problem 2
-##Make Dataframe
+# Problem 2
+
+## Make Dataframe
+
 ```{r}
 df_2 = tibble(
   number=rnorm(10),
@@ -49,16 +58,20 @@ df_2 = tibble(
 
 print(df_2)
 ```
-##Calculate mean
+
+## Calculate mean
+
 ```{r}
 mean_number = mean(pull(df_2,number))
 mean_logical = mean(pull(df_2,logical))
 mean_character = mean(pull(df_2,character))
 mean_factor = mean(pull(df_2,factor))
 ```
+
 Out of 4 variables of dataframe above, we can only calculate mean of numeric and logical ones, while taking mean of characters and factors yeilds to NA_real_ result. 
 
-##as.numeric code chunk
+## as.numeric code chunk
+
 ```{r, eval=FALSE}
 df_2 %>%
   logical=as.numeric(logical)
@@ -70,4 +83,5 @@ df_2 %>%
   factor=as.numeric(factor)
 #error shows "cannot coerce type 'closure' to vector of type 'double'"
 ```
+
 We can see that we can't perform as.numeric for all, but we still can calculate mean for logical + numeric. Logical variables can be considered as 1=TRUE, 0=FALSE, hence, resulting in mean.
